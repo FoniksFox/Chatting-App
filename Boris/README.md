@@ -58,12 +58,21 @@ Boris/
 │   ├── storage.js      # Local storage management
 │   └── utils.js        # Utility functions
 ├── assets/
+│   ├── docs/           # Documentation images (wireframes, etc.)
 │   ├── icons/          # Custom icons
 │   └── sounds/         # Notification sounds
 └── README.md           # This file
 ```
 
 ## Design Decisions
+
+### Wireframe
+
+![Chat App Wireframe](assets/docs/wireframe.png)
+
+*Initial wireframe showing the basic layout, mobile layout would consist on two separate sections based on the desktop version: a contacts section and a messaging section.*
+
+*Might consider adding a tabs top menu, like a browser or file explorer, for the messaging section. Might as well consider adding a quick-switch action to toggle, in the contacts section, between a folders view and a more traditional "recents" view, or maybe even a bookmarks view.*
 
 ### Color Scheme
 
