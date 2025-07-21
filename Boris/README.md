@@ -93,6 +93,18 @@ Boris/
 - Fixed input area at bottom
 - Responsive design for mobile devices
 
+### HTML Structure
+
+The app uses semantic HTML5 elements to create an accessible and well-structured foundation:
+
+- **Two-panel layout**: `<main>` contains two `<section>` elements (contacts and chat) representing distinct functional areas
+- **Heading hierarchy**: `<h1>` for app title, `<h2>` for chat partner name, `<h3>` for "landmarks" in the chat (maybe for different days, to be decided)
+- **Semantic lists**: `<ul>` for contacts, `<ol>` for chat messages (chronological order)
+- **Navigation elements**: `<nav>` wraps action buttons for better accessibility
+- **Form semantics**: Message input uses proper `<form>`, `<label>`, and form controls
+
+This structure prioritizes semantic meaning, making the app more accessible and maintainable.
+
 ## Learning Goals
 
 - Master CSS Grid and Flexbox for complex layouts
@@ -102,6 +114,9 @@ Boris/
 - Explore CSS animations and transitions
 
 ## Notes and Reflections
+
+**July 21, 2025 - Semantic HTML Foundation**
+Completed the initial HTML structure with a focus on semantic elements and accessibility. The two-panel layout uses sections to clearly separate contacts and chat functionality. This foundation will make CSS styling and JavaScript interactions much cleaner to implement, as well as identify the areas that still need work.
 
 *This section will be updated throughout the development process with insights, challenges, and solutions discovered during implementation.*
 
