@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>Chatting App</title>
+    <!-- (TODO) Link to CSS styles -->
+    <!-- (TODO) Link to JS scripts -->
+    <!-- (TODO) Link to favicon, or fontawesome, or whatever -->
+</head>
+<body>
+    <!-- (TODO) Add aria accessibility attributes -->
+    <main>
+        <section id="contacts-window">
+            <header id="contacts-header-bar">
+                <h1>Chatting App</h1>
+                <nav>
+                    <button id="new-chat-button">New Chat</button>
+                    <button id="settings-button">Settings</button>
+                </nav>
+            </header>
+            <!-- (TODO) Search functionality and Focus Management for contacts -->
+            <div class="search-container">
+                <label for="search-input" class="visually-hidden">Search contacts</label>
+                <input type="text" 
+                    id="search-input" 
+                    placeholder="Search contacts..."
+                />
+            </div>
+            <div class="contacts-content">
+                <ul id="contacts-list">
+                    <!-- (TODO) Example contacts, replace with dynamic content -->
+                    <li class="contact" data-id="1">Alice</li>
+                    <li class="contact" data-id="2">Bob</li>
+                    <li class="contact" data-id="3">Charlie</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="chat-window">
+            <header id="chat-header-bar">
+                <h2 id="chat-partner-name">Contact X</h2>
+                <button id="options-button">Options</button>
+            </header>
+            <div id="chat-content">
+                <ol id="chat-messages" role="log" aria-live="polite" aria-label="Chat conversation">
+                    <!-- (TODO) Example messages, replace with dynamic content -->
+                    <li class="message sent">
+                        <p>Hello!</p>
+                    </li>
+                    <li class="message received">
+                        <p>Hi there!</p>
+                    </li>
+                </ol>
+            </div>
+            <footer id="chat-input-bar">
+                <form id="message-form">
+                    <label for="chat-input" class="visually-hidden">Type your message</label>
+                    <input type="text" id="chat-input" placeholder="Type a message..." required>
+                    <button type="submit" id="send-button">Send</button>
+                </form>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>
