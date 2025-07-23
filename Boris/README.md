@@ -105,6 +105,17 @@ The app uses semantic HTML5 elements to create an accessible and well-structured
 
 This structure prioritizes semantic meaning, making the app more accessible and maintainable.
 
+### CSS Structure
+
+The app aims to use the best css practices possible, and for that the following structure emerges:
+
+- **Styles:** Contains the global variables, configurations, the layout of the "main" component, default styles for elements and utility classes.
+- **Themes:** Contains the css in charge of all the colors and a light and dark color scheme. It is planned to add support for system colors in the future, for a more native appearance.
+- **Responsive:** Will contain the css in charge of making the app responsive, especially on the screen width. It is supposed - in the future - to change from the two-panel layout to a single-panel layout when the screen is too narrow.
+- **Chat and Contacts:** Separate css files each meant to handle it's panel.
+
+This structure ensures a clear hierarchy and order.
+
 ## Learning Goals
 
 - Master CSS Grid and Flexbox for complex layouts
@@ -117,6 +128,9 @@ This structure prioritizes semantic meaning, making the app more accessible and 
 
 **July 21, 2025 - Semantic HTML Foundation**
 Completed the initial HTML structure with a focus on semantic elements and accessibility. The two-panel layout uses sections to clearly separate contacts and chat functionality. This foundation will make CSS styling and JavaScript interactions much cleaner to implement, as well as identify the areas that still need work.
+
+**July 23, 2025 - CSS Foundation**
+Established the CSS structure with a separation of concerns between the files, to make the project as easy as possible to maintain, while being easily customizable. The top-level layout is complete, just laking in the more complex areas, meaning the *contacts list* and the *chat content*.
 
 *This section will be updated throughout the development process with insights, challenges, and solutions discovered during implementation.*
 
