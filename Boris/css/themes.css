@@ -1,0 +1,27 @@
+:root {
+    color-scheme: light dark;
+    --border: #ccc;
+    --bg-primary: #fff;
+    --bg-secondary: #f5f5f5;
+    --bg-tertiary: #fff;
+    --accent-primary: #007bff;
+    --accent-secondary: #0056b3;
+    --text-primary: #000;
+    --text-secondary: #6c757d;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --border: #555;
+        --bg-primary: #1a1a1a;
+        --bg-secondary: #333;
+        --bg-tertiary: #2d2d2d;
+        --accent-primary: #0066cc;
+        --accent-secondary: #004499;
+        --text-primary: #fff;
+        --text-secondary: #ccc;
+    }
+}
+
+/* (TODO) Add system colors support with fallback, instead of hardcoded values */
