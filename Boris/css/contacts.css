@@ -45,23 +45,93 @@
     margin-right: 0.5rem;
 }
 .contact {
-    padding: 0.5rem;
+    padding: 0.3rem;
     cursor: pointer;
     background-color: none;
     border-radius: var(--border-radius);
 }
 .foldered-contacts {
     list-style: none;
-    padding-left: 0.5rem;
+    padding-left: 1rem;
+    padding-top: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    border-left: 1px solid var(--border);
 }
 .contact-folder {
-    padding-left: 0.5rem;
     padding-top: 0.5rem;
 }
+
+.contact-folder > p:hover {
+    background-color: var(--bg-secondary);
+}
+
+.contact-folder > p {
+    color: var(--text-primary);
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    padding: 0.2rem 0 0.2rem 1.2rem;
+    transition: color 0.2s ease;
+    transition: background-color 0.2s ease;
+}
+
+/* Folder arrow indicator */
+.contact-folder > p::before {
+    content: ">";
+    position: absolute;
+    left: 0.2rem;
+    top: 0.15rem;
+    transition: transform 0.3s ease;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.contact-folder.expanded > p::before {
+    transform: rotate(90deg);
+}
+
+.contact-folder > ul{
+    overflow: hidden;
+    transform-origin: top;
+    transform: scaleY(0);
+    animation: maxHeightCollapse 0.3s ease forwards;
+    opacity: 0;
+    transition: transform 0.3s ease,
+                opacity 0.2s ease,
+                margin 0.3s ease;
+    margin-top: 0;
+}
+.contact-folder.expanded > ul{
+    transform: scaleY(1);
+    animation: maxHeightExpand 0.3s ease forwards;
+    opacity: 1;
+    margin-top: 0.5rem;
+}
+@keyframes maxHeightExpand {
+    from {
+        max-height: 0;
+    }
+    99% {
+        max-height: 100vh; /* Arbitrary large value to allow expansion */
+    }
+    100% {
+        max-height: none; /* Allow it to expand fully */
+    }
+}
+@keyframes maxHeightCollapse {
+    from {
+        max-height: 100vh; /* Arbitrary large value to allow expansion */
+    }
+    to {
+        max-height: 0;
+    }
+}
+
 .contact-folder * {
     margin: 0;
 }
