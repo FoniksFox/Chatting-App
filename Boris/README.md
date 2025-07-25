@@ -24,12 +24,11 @@ This is my personal implementation of the chatting application project. I'll be 
 
 #### Core Features
 
-- [ ] Clean chat interface with message bubbles
+- [ ] Clean chat interface
+- [X] Contacts "folder-like" browsing
 - [ ] Real-time message input with enter key support
-- [ ] User name persistence
 - [ ] Message timestamps
-- [ ] Local storage for chat history
-- [ ] Basic emoji picker
+- [X] Local storage for chat history and contacts
 - [ ] Peer-to-peer messaging (with webRTC)
 
 #### Advanced Features (If time permits)
@@ -37,11 +36,13 @@ This is my personal implementation of the chatting application project. I'll be 
 - [ ] Dark/light theme toggle + Accent color selector
 - [ ] Message editing (double-click to edit)
 - [ ] Message deletion
+- [ ] Basic emoji picker
 - [ ] Chat export functionality
 - [ ] Typing indicators simulation
 - [ ] Sound notifications
 - [ ] Markdown style text editor, with right-click options (using external libraries)
 - [ ] Enhanced security and privacy
+- [ ] Drag & Drop in contacts folders
 
 ## Project Structure
 
@@ -55,6 +56,7 @@ Boris/
 ├── js/
 │   ├── app.js          # Main application logic
 │   ├── chat.js         # Chat functionality
+│   ├── contacts.js     # Contacts functionality
 │   ├── storage.js      # Local storage management
 │   └── utils.js        # Utility functions
 ├── assets/
@@ -116,6 +118,18 @@ The app aims to use the best css practices possible, and for that the following 
 
 This structure ensures a clear hierarchy and order.
 
+### JS Structure
+
+The JS files are separated according to their concerns, following this structure:
+
+- Storage: Responsible for the save and retrieval of all the stored data. It uses local storage, since the app aims to not have a backend and be peer-to-peer.
+- App: Responsible for all the interactions within the UI. Uses event handlers and redirects all interactions to the corresponding function. This way, it acts as the entry point of all interactions, but it shouldn't do any of the logic.
+- Contacts: Handles the contact list, mainly the rendering and the addition of contacts. Calls to storage for changes and retrieval of contacts.
+- Chat: Will handle all the chat logic.
+- Utils: In case there is a need for a function available everywhere
+
+With this structure, each script has only one responsibility and concern. It is yet to be decided whether the peer-to-peer logic will go into the chat file, or in a separate file.
+
 ## Learning Goals
 
 - Master CSS Grid and Flexbox for complex layouts
@@ -130,7 +144,10 @@ This structure ensures a clear hierarchy and order.
 Completed the initial HTML structure with a focus on semantic elements and accessibility. The two-panel layout uses sections to clearly separate contacts and chat functionality. This foundation will make CSS styling and JavaScript interactions much cleaner to implement, as well as identify the areas that still need work.
 
 **July 23, 2025 - CSS Foundation**
-Established the CSS structure with a separation of concerns between the files, to make the project as easy as possible to maintain, while being easily customizable. The top-level layout is complete, just laking in the more complex areas, meaning the *contacts list* and the *chat content*.
+Established the CSS structure with a separation of concerns between the files, to make the project as easy as possible to maintain, while being easily customizable. The top-level layout is complete, just lacking in the more complex areas, meaning the *contacts list* and the *chat content*.
+
+**July 25, 2025 - JS Storage and Contacts functionalities**
+Set the structure for all the memory-related components, so that no incompatibility arises in the future. Established different JS files to separate responsibilities. This way, the app becomes pretty modular and way easier to debug. Added contacts management as well, with contacts folders (a key difference between this app and others). There are multiple possible improvements on these systems, but they work for now, so there's no need to hurry and change them prematurely.
 
 *This section will be updated throughout the development process with insights, challenges, and solutions discovered during implementation.*
 
