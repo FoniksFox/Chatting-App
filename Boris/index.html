@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>Chatting App</title>
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/styles.css"/>
     <link rel="stylesheet" href="css/contacts.css"/>
     <link rel="stylesheet" href="css/chat.css"/>
     <link rel="stylesheet" href="css/themes.css"/>
     <link rel="stylesheet" href="css/responsive.css"/>
-    <!-- (TODO) Link to JS scripts -->
+
+    <!-- JavaScript files -->
+    <script src="js/utils.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/contacts.js" defer></script>
+    <script src="js/chat.js" defer></script>
+    <script src="js/app.js" defer></script>
     <!-- (TODO) Link to favicon, or fontawesome, or whatever -->
 </head>
 <body>
@@ -24,20 +32,23 @@
                 </nav>
             </header>
             <!-- (TODO) Search functionality and Focus Management for contacts -->
-            <div class="input-container" id="search-container">
+            <div id="search-container-container">
+                <div class="input-container" id="search-container">
                 <label for="search-input" class="visually-hidden">Search contacts</label>
                 <input type="text" 
                     id="search-input" 
                     placeholder="Search contacts..."
                 />
             </div>
+            </div>
+            
             <div id="contacts-content" class="scrollable">
                 <ul id="contacts-list" >
                     <!-- (TODO) Example contacts, replace with dynamic content -->
                     <!-- (TODO) Stylize optgroups (contact folders)-->
-                    <li class="contact-group">
+                    <li class="contact-folder">
                         <p>Group 1</p>
-                        <ul class="group-contacts">
+                        <ul class="foldered-contacts">
                             <li class="contact hover-effect" data-id="1">Alice</li>
                             <li class="contact hover-effect" data-id="2">Bob</li>
                         </ul>
@@ -65,7 +76,7 @@
             </div>
         </section>
 
-        <section id="chat-window">
+        <section id="chat-window" contact-id="0">
             <header id="chat-header-bar">
                 <h2 id="chat-partner-name">Contact X</h2>
                 <button id="options-button">Options</button>

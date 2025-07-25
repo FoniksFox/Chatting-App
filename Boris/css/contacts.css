@@ -2,7 +2,6 @@
     flex: 0 0 33%;
     min-width: 350px;
     border-right: 1px solid var(--border);
-    padding-bottom: 0;
 
     display: flex;
     flex-direction: column;
@@ -14,6 +13,11 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 0.5rem;
+}
+
+#search-container-container {
+    padding: 0 0.5rem;
 }
 
 #search-container {
@@ -23,6 +27,7 @@
 
 #contacts-content {
     flex: 1;
+    padding-left: 0.5rem;
 }
 
 #contacts-list {
@@ -33,17 +38,30 @@
     flex-direction: column;
     gap: 0.5rem;
 }
+#contacts-list > li {
+    margin-right: 0.5rem;
+}
+#contacts-list > div {
+    margin-right: 0.5rem;
+}
 .contact {
     padding: 0.5rem;
     cursor: pointer;
     background-color: none;
     border-radius: var(--border-radius);
 }
-.group-contacts {
+.foldered-contacts {
     list-style: none;
-    padding: 0 0 0 1rem;
+    padding-left: 0.5rem;
     margin: 0;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+.contact-folder {
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+}
+.contact-folder * {
+    margin: 0;
 }
