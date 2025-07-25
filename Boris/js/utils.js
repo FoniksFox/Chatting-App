@@ -1,0 +1,6 @@
+/* Other utilities fo the app
+
+   This module contains utility functions and helpers used throughout the chatting app.
+   It provides common functionality that can be reused across different modules.
+
+*/
