@@ -35,14 +35,14 @@ const defaultContact2 = {
 };
 const defaultMessage = {
     id: 0, // Unique within the chat
-    senderId: 0,
+    senderID: 0,
     content: "message text",
     timestamp: Date.now(),
     type: "text", // or "image", "file", etc.
-    status: "sent" // "sent", "delivered", "read"
+    status: "notDelivered" // "notDelivered", "delivered", "read"
 };
 const defaultChat = {
-    id: 0, // Id of the contact this chat is with
+    id: 0, // ID of the contact this chat is with
     messages: [defaultMessage]
 };
 
@@ -57,6 +57,11 @@ const defaultUserSettings = {
 
 // Storage management functions
 const Storage = {
+	// User settings
+	getUserID() {
+		return userSettings.userID || 0; // Default to 0 for testing purposes
+	},
+
     // Contact management
     addContact(contact) {
         // (TODO): Validate contact before adding
@@ -78,18 +83,18 @@ const Storage = {
     },
     
     // Chat management
-    addMessage(contactId, message) {
-        let chat = chatHistory.find(chat => chat.id === contactId);
+    addMessage(contactID, message) {
+        let chat = chatHistory.find(chat => chat.id === String(contactID));
         if (!chat) {
-            chat = { id: contactId, messages: [] };
+            chat = { id: String(contactID), messages: [] };
             chatHistory.push(chat);
         }
         chat.messages.push(message);
         this.saveToLocalStorage();
     },
-    
-    getChatHistory(contactId) {
-        const chat = chatHistory.find(chat => chat.id === contactId);
+
+    getChatHistory(contactID) {
+        const chat = chatHistory.find(chat => chat.id === contactID);
         return chat ? [...chat.messages] : [];
     },
     
