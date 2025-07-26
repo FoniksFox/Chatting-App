@@ -55,19 +55,12 @@
             </header>
             <div id="chat-content" class="scrollable">
                 <ol id="chat-messages" role="log" aria-live="polite" aria-label="Chat conversation">
-                    <!-- (TODO) Example messages, replace with dynamic content -->
-                    <li class="message sent">
-                        <p>Hello!</p>
-                    </li>
-                    <li class="message received">
-                        <p>Hi there!</p>
-                    </li>
                 </ol>
             </div>
             <footer id="chat-input-bar" class="input-container">
                 <form id="message-form">
                     <label for="chat-input" class="visually-hidden">Type your message</label>
-                    <input type="text" id="chat-input" placeholder="Type a message..." required>
+                    <textarea id="chat-input" class="scrollable" placeholder="Type a message..." required></textarea>
                     <button type="submit" id="send-button">Send</button>
                 </form>
             </footer>

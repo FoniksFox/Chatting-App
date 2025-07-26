@@ -42,8 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		const contactElement = event.target.closest(".contact");
 		if (contactElement) {
 			const contactId = contactElement.dataset.id;
-			// (TODO): Handle opening chat with the selected contact
-			console.log(`Opening chat with contact ID: ${contactId}`);
+			Chat.openChat(contactId);
+			// (TODO) Highlight the selected contact
+			//console.log(`Opening chat with contact ID: ${contactId}`);
 		} else {
 			const folderElement = event.target.closest(".contact-folder");
 			if (folderElement) {
@@ -51,4 +52,39 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		}
 	});
+
+	const chatForm = document.getElementById("message-form");
+	const chatInput = document.getElementById('chat-input');
+	
+	// Check if browser supports field-sizing CSS property
+	const supportsFieldSizing = CSS.supports('field-sizing', 'content');
+	
+	// Auto-resize chat input field fallback for older browsers that do not support CSS 'field-sizing'
+	// Takes more vertical space, because of the default textarea height of 48px, but it works
+	const resizeChatInput = () => {
+		// Only resize if browser doesn't support field-sizing
+		if (!supportsFieldSizing) {
+			chatInput.style.height = 'auto';
+			const newHeight = Math.max(chatInput.scrollHeight, 32); // 32px = 2rem minimum to match CSS
+			chatInput.style.height = Math.min(newHeight, 128) + 'px'; // 128px = 8rem max
+		}
+	};
+	const submitMessage = (event) => {
+		event.preventDefault();
+		const messageInput = document.getElementById("chat-input");
+		const messageContent = messageInput.value.trim();
+		if (messageContent) {
+			Chat.sendMessage(messageContent);
+			messageInput.value = ""; // Clear input after sending
+			resizeChatInput();
+		}
+	};
+	chatForm.addEventListener("submit", submitMessage);
+	chatForm.addEventListener("keydown", (event) => {
+		if (event.key === "Enter" && !event.shiftKey) {
+			event.preventDefault();
+			submitMessage(event);
+		}
+	});
+	chatInput.addEventListener('input', resizeChatInput);
 });
