@@ -15,8 +15,7 @@ const Contacts = {
 		contactListElement.innerHTML = ""; // Clear existing contacts
 		let contactsTree = [];
 		contactList.forEach(contact => {
-			const contactElement = document.createElement("div");
-			if (contact.basePath !== '/') {
+			if (contact.basePath !== '/' && contact.basePath) {
 				const pathParts = contact.basePath.split('/');
 				let currentLevel = contactsTree;
 				pathParts.forEach(part => {

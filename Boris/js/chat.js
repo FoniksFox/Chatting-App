@@ -4,6 +4,17 @@
    It interacts with the storage module to retrieve and store chat messages and contact information.
 */
 
+/* Example receiveMessage usage (for testing purposes until messaging is implemented):
+Chat.receiveMessage({
+	id: Date.now(),
+	senderID: 1,
+	content: "Hello from the other side!",
+	timestamp: Date.now(),
+	type: "text",
+	status: "delivered"
+});
+*/
+
 const Chat = {
 	openChat(contactID) {
 		const contact = Storage.getContact(contactID);
@@ -26,13 +37,14 @@ const Chat = {
 
 		messages.forEach(message => {
 			// (TODO) Add distinction for different days
+			// (TODO) Add a limit to the number of messages loaded
 			this.addMessage(message);
 		});
 
 		const chatContent = document.getElementById("chat-content");
-		setTimeout(() => {
+		setTimeout(() => { // Use setTimeout to ensure DOM is updated
 			chatContent.scrollTop = chatContent.scrollHeight;
-		}, 0); // Use setTimeout to ensure DOM is updated
+		}, 0);
 	},
 
 	addMessage(message) {
@@ -85,14 +97,3 @@ const Chat = {
 		}
 	}
 }
-
-/* Example receiveMessage usage (for testing purposes):
-Chat.receiveMessage({
-	id: Date.now(),
-	senderID: 1,
-	content: "Hello from the other side!",
-	timestamp: Date.now(),
-	type: "text",
-	status: "delivered"
-});
-*/

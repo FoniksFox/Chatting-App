@@ -4,7 +4,6 @@
 	It initializes the app, sets up event listeners, and manages the overall application state.
 */
 
-// Initialize the app on load & Set up event listeners for UI elements
 document.addEventListener("DOMContentLoaded", () => {
 	Storage.loadFromLocalStorage();
 	Contacts.updateContactList();
@@ -19,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	addContactButton.addEventListener("click", () => {
 		const contactID = prompt("Enter contact ID:");
 		const contactName = prompt("Enter contact name:");
-		const contactBasePath = prompt("Enter contact base path (optional):", "/");
+		let contactBasePath = prompt("Enter contact base path (optional):", "/");
 		if (!contactID) {
 			alert("Contact ID is required.");
 			return;
@@ -27,6 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			alert("Contact name is required.");
 			return;
 		} else {
+			if (contactBasePath[0] !== '/') {
+				contactBasePath = '/' + contactBasePath; // Ensure base path starts with '/'
+			}
 			const contact = {
 				id: contactID,
 				name: contactName,
@@ -56,17 +58,15 @@ document.addEventListener("DOMContentLoaded", () => {
 	const chatForm = document.getElementById("message-form");
 	const chatInput = document.getElementById('chat-input');
 	
-	// Check if browser supports field-sizing CSS property
-	const supportsFieldSizing = CSS.supports('field-sizing', 'content');
-	
-	// Auto-resize chat input field fallback for older browsers that do not support CSS 'field-sizing'
-	// Takes more vertical space, because of the default textarea height of 48px, but it works
+	/* Auto-resize chat input field fallback for older browsers that do not support CSS 'field-sizing'
+	Takes more vertical space, because of the default textarea height of 48px, but it works */
 	const resizeChatInput = () => {
-		// Only resize if browser doesn't support field-sizing
+		// Only resize if browser doesn't support field-sizing, fallback for older browsers. Otherwise, the CSS will handle it
+		const supportsFieldSizing = CSS.supports('field-sizing', 'content');
 		if (!supportsFieldSizing) {
 			chatInput.style.height = 'auto';
-			const newHeight = Math.max(chatInput.scrollHeight, 32); // 32px = 2rem minimum to match CSS
-			chatInput.style.height = Math.min(newHeight, 128) + 'px'; // 128px = 8rem max
+			const newHeight = Math.max(chatInput.scrollHeight, 32); // 2rem minimum to match CSS
+			chatInput.style.height = Math.min(newHeight, 128) + 'px'; // 8rem max
 		}
 	};
 	const submitMessage = (event) => {
