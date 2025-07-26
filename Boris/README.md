@@ -24,11 +24,13 @@ This is my personal implementation of the chatting application project. I'll be 
 
 #### Core Features
 
-- [ ] Clean chat interface
+- [X] Clean chat interface
 - [X] Contacts "folder-like" browsing
-- [ ] Real-time message input with enter key support
-- [ ] Message timestamps
+- [X] Real-time message input with enter key support
+- [X] Message timestamps
 - [X] Local storage for chat history and contacts
+- [ ] Responsive layout for mobile usage
+- [ ] New messages indicator
 - [ ] Peer-to-peer messaging (with webRTC)
 
 #### Advanced Features (If time permits)
@@ -78,22 +80,29 @@ Boris/
 
 ### Color Scheme
 
-- Primary: *To be decided*
+- Accent: Set to a shade of blue for now, but the intentios is to later let the user pick it (or use the browser's accent color)
 - Message bubbles: Differentiated colors for sent/received
 - Emphasis on readability and eye comfort
 
 ### Typography
 
-- *Font to be decided*
+- System fonts are prefered, with safe fallbacks
 - Proper font weights for hierarchy
 - Optimal font sizes for readability
 
 ### Layout
 
-- Fixed header with chat title/controls
-- Scrollable message area
-- Fixed input area at bottom
-- Responsive design for mobile devices
+- Two-panels
+  - Contacts panel
+    - Header with app name and action buttons
+    - Search bar for filtering contacts
+    - Contacts list with a folder view
+  - Chatting panel
+    - Header with contact name and options button
+    - Chat area, where all the messages are displayed
+    - Input bar at the bottom
+- Scrollable message and contacts areas
+- Responsive design for mobile devices *to be added*
 
 ### HTML Structure
 
@@ -104,6 +113,8 @@ The app uses semantic HTML5 elements to create an accessible and well-structured
 - **Semantic lists**: `<ul>` for contacts, `<ol>` for chat messages (chronological order)
 - **Navigation elements**: `<nav>` wraps action buttons for better accessibility
 - **Form semantics**: Message input uses proper `<form>`, `<label>`, and form controls
+- **Contacts list:** Each contact is a `<li>`, while each folder is a `<div>` with a `<p>` element for it's name and a `<ul>` element for the contacts within the group.
+- **Messages:** Each message is a `<li>` with a variety of classes that comunicates information to be displayed by the UI, and a data-id so that each message is identifiable within the list.
 
 This structure prioritizes semantic meaning, making the app more accessible and maintainable.
 
@@ -125,7 +136,7 @@ The JS files are separated according to their concerns, following this structure
 - Storage: Responsible for the save and retrieval of all the stored data. It uses local storage, since the app aims to not have a backend and be peer-to-peer.
 - App: Responsible for all the interactions within the UI. Uses event handlers and redirects all interactions to the corresponding function. This way, it acts as the entry point of all interactions, but it shouldn't do any of the logic.
 - Contacts: Handles the contact list, mainly the rendering and the addition of contacts. Calls to storage for changes and retrieval of contacts.
-- Chat: Will handle all the chat logic.
+- Chat: Handles the chat rendering and logic (sending, recieving and auto-scrolling). Calls to storage for chat-history.
 - Utils: In case there is a need for a function available everywhere
 
 With this structure, each script has only one responsibility and concern. It is yet to be decided whether the peer-to-peer logic will go into the chat file, or in a separate file.
@@ -148,6 +159,10 @@ Established the CSS structure with a separation of concerns between the files, t
 
 **July 25, 2025 - JS Storage and Contacts functionalities**
 Set the structure for all the memory-related components, so that no incompatibility arises in the future. Established different JS files to separate responsibilities. This way, the app becomes pretty modular and way easier to debug. Added contacts management as well, with contacts folders (a key difference between this app and others). There are multiple possible improvements on these systems, but they work for now, so there's no need to hurry and change them prematurely.
+
+**July 26, 2025 - JS Chat functionality**
+Made the chat functionality, both the UI and storage logics. Focused on a seamles UX for this section, since it is the one where the users will spend most of the tyme in. There are still many enhancements left to do for a truly good expierence, but the base has been set, ant it is just a matter of adding functions.
+Due to time constraints, the peer-to-peer messaging will be impossible to add, so I will plan an architecture and leave it at that, maybe recover the project some other time.
 
 *This section will be updated throughout the development process with insights, challenges, and solutions discovered during implementation.*
 
